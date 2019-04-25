@@ -30,6 +30,23 @@
       <h1>VariAsian</h1>
     </div>
 
+    <div id="mySidenav" class="sidenav">
+        <a href="closeNav()">&times;</a>
+        <a href="html/about.html">About</a>
+        <a href="html/upcoming_performances.html">Upcoming Performances</a>
+        <a href="html/team_roster.html">Team Roster</a>
+        <a href="html/faqs.html">FAQs</a>
+        <a href="html/member_services.html">Member Services</a>
+        <a href="html/media.html">Media</a>
+        <a href="html/meet_the_board.html">Meet the Board</a>
+        <a href="html/audition_info.html">Audition Info</a>
+        <a href="html/contact_us.html">Contact Us</a>
+      </div>
+      
+      <!-- Use any element to open the sidenav -->
+    <body onclick="openNav()"></body>
+    <div id="main", onclick="closeNav()"></div>
+
     <script>
         window.onscroll = function() {scrollFunction()};
 
@@ -45,6 +62,20 @@
             header.classList.remove("sticky");
           }
         };
+
+        document.getElementById('main').addEventListener('click', closeNav);
+
+        /* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
+        function openNav() {
+          document.getElementById("mySidenav").style.width = "400px";
+          document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
+        function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+          document.getElementById("main").style.marginLeft = "0";
+        }
     </script>
   </body>
 </html>
