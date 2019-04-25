@@ -65,3 +65,5 @@ node_modules/
 .env
 
 public/video/energetic_video.mp4
+
+public/video/fake_love_vid.mp4

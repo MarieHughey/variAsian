@@ -6,12 +6,36 @@
     color: #000000;
 }
 
+.header h2 {
+    margin-top: 0;
+    position: relative;
+    padding: 20px 300px;
+    background: rgb(214, 227, 250);
+    color: #000000;
+}
+
+.loginBox {
+    text-decoration: none;
+    font-family: 'Julius Sans One';
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
 #backgroundVid {
     position: fixed;
     right: 0;
     bottom: 0;
     min-width: 100%;
     min-height: 100%;
+}
+
+#memberPic {
+    position: fixed;
+    top: 0;
+    right: 0;
+    min-width: 80%;
+    min-height: 110%;
 }
 
 .content {
