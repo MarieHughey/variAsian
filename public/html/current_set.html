@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Julius+Sans+One">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VariAsian: Current Set</title>
+  </head>
+
+  <body>
+    <div class="container">
+        <!-- <img src="../images/bts.jpg" id="btsPic" alt="" style="width:100%;"> -->
+        <video autoplay muted loop id="backgroundVid">
+            <source src="../video/begin_vid.mp4" type="video/mp4" width="200" height="40">
+        </video>
+        
+        <div class="header" id ="aboutHeader" style="font-family: 'Julius Sans One', serif; font-size: 60px;">
+          <h2>Current Set</h2>
+        </div>
+
+        <div class="button-block">
+            <button onclick="log_out()" id="log-out" style="font-family: 'Julius Sans One', serif; top: 50px; right: 50px; z-index:5;" >Log Out</button>
+        </div>
+
+        <div class="content2">
+            <form id="add-song-form">
+                <input type="text" style="font-family: 'Julius Sans One'" name="piece_name" placeholder="Enter Piece Name">
+                <input type="text" style="font-family: 'Julius Sans One'" name="members" placeholder="Enter Members">
+                <button type="submit" style="font-family: 'Julius Sans One'">Add Suggestion</button>
+            </form>
+            <ul class="collapsible z-depth-0 song_suggestions" style="border-bottom-color: orchid; list-style-type: none;">
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-firestore.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCsV0oOkeADiAgYiLriwK-s5PCuyg62ejk",
+        authDomain: "variasian-connected.firebaseapp.com",
+        databaseURL: "https://variasian-connected.firebaseio.com",
+        projectId: "variasian-connected",
+        storageBucket: "variasian-connected.appspot.com",
+        messagingSenderId: "317829998576"
+      };
+
+      firebase.initializeApp(config);
+
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+
+    </script> 
+
+    <script>
+
+    const form = document.querySelector('#add-song-form');
+
+    db.collection('current_set').get().then(snapshot => {
+        setupSongs(snapshot.docs);
+        console.log(snapshot.docs);
+    });
+
+    const songList = document.querySelector('.current_set');
+    
+
+    const setupSongs = (data) => {
+        let html ='';
+        let cross = document.createElement('button');
+        data.forEach(doc => {
+            const piece = doc.data();
+            console.log(piece);
+            cross.textContent= 'x';
+            const li = `
+                <li>
+                    <div class="header" style="color: white; font-family: 'Julius Sans One'";><h3>${piece.song_title.value}</h3></div>
+                
+                    <p></p>
+                    <p></p>
+                </li>
+            `;
+            html += li;
+        })
+
+        songList.innerHTML = html;
+    }
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        db.collection('song_suggestions').add({
+            song_title: form.piece_name.value,
+            song_artist: form.members.value,
+            votes: 0
+        });
+        console.log(form.piece_name.value);
+        console.log(form.members.value);
+        form.reset();
+        window.location.reload();
+    })
+
+    function log_out() {
+        auth.signOut().then(() =>  {
+            open("../index.html", "_self");
+        });
+    }
+
+
+    </script>
+  </body>
+</html>
