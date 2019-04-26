@@ -17,16 +17,54 @@
 
         <div class="text-block">
             <h4>Sign In</h4>
-            <form>
+            <form id="login-form">
                 <p> Email</p>
                 <input type="email" name="" placeholder="Enter Email" id="userEmail" style="font-family: 'Julius Sans One', serif;">
                 <p> Password</p>
                 <input type="password" name="" placeholder="Enter Password" id="userPassword" style="font-family: 'Julius Sans One', serif;">
-                <input type="submit" name="" value="Login" onclick="{onSubmitLogin(); return false}" style="font-family: 'Julius Sans One', serif;">
-                <p id="loginFailed"></p>
+                <button class="submit" name="" style="font-family: 'Julius Sans One', serif;">Login</button>
                 <a href="register_account.html" style="color: rgb(85, 17, 173)">Create an Account</a>
             </form>
         </div>
     </div>
+
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-firestore.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCsV0oOkeADiAgYiLriwK-s5PCuyg62ejk",
+        authDomain: "variasian-connected.firebaseapp.com",
+        databaseURL: "https://variasian-connected.firebaseio.com",
+        projectId: "variasian-connected",
+        storageBucket: "variasian-connected.appspot.com",
+        messagingSenderId: "317829998576"
+      };
+      firebase.initializeApp(config);
+
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+
+    </script> 
+
+    <script>
+    
+    const loginForm = document.querySelector('#login-form');
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const email = loginForm['userEmail'].value;
+        const password = loginForm['userPassword'].value;
+        console.log(email);
+        console.log(password);
+
+        auth.signInWithEmailAndPassword(email, password).then(cred => {
+            console.log(cred.user);
+            open("member_services.html", "_self");
+        });
+    })
+
+    </script>
   </body>
 </html>

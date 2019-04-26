@@ -17,7 +17,7 @@
 
         <div class="text-block">
             <h4>Enter Information Below For Board Member Approval:</h4>
-            <form>
+            <form id="signup-form">
                 <p> Name</p>
                 <input type="name" name="" placeholder="Enter Name" id="userName" style="font-family: 'Julius Sans One', serif;">
                 <p> Email</p>
@@ -26,11 +26,51 @@
                 <input type="phone_number" name="" placeholder="Enter Phone Number" id="userPhone" style="font-family: 'Julius Sans One', serif;">
                 <p> Password</p>
                 <input type="password" name="" placeholder="Enter Password" id="userPassword" style="font-family: 'Julius Sans One', serif;">
-                <input type="submit" name="" value="Submit for Approval" onclick="{onSubmitLogin(); return false}" style="font-family: 'Julius Sans One', serif;">
-                <p id="loginFailed"></p>
+                <p></p>
+                <button class="submit" style="font-family: 'Julius Sans One', serif;">Submit for Approval</button>
+
                 <a href="login_page.html" style="color: rgb(214, 227, 250)">Already Registered? Sign In</a>
             </form>
         </div>
     </div>
+
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-firestore.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCsV0oOkeADiAgYiLriwK-s5PCuyg62ejk",
+        authDomain: "variasian-connected.firebaseapp.com",
+        databaseURL: "https://variasian-connected.firebaseio.com",
+        projectId: "variasian-connected",
+        storageBucket: "variasian-connected.appspot.com",
+        messagingSenderId: "317829998576"
+      };
+      firebase.initializeApp(config);
+
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+
+    </script> 
+
+    <script>
+    
+    const signupForm = document.querySelector('#signup-form');
+    signupForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const email = signupForm['userEmail'].value;
+        const password = signupForm['userPassword'].value;
+        console.log(email);
+        console.log(password);
+
+        auth.createUserWithEmailAndPassword(email, password).then(cred => {
+            console.log(cred.user);
+            open("login_page.html", "_self");
+        });
+    })
+
+    </script>
   </body>
 </html>
