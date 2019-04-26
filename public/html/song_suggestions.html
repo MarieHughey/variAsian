@@ -10,13 +10,17 @@
 
   <body>
     <div class="container">
-        <img src="../images/bts.jpg" id="btsPic" alt="" style="width:100%;">
+        <!-- <img src="../images/bts.jpg" id="btsPic" alt="" style="width:100%;"> -->
+        <video autoplay muted loop id="backgroundVid">
+            <source src="../video/la_vie.mp4" type="video/mp4" width="200" height="40">
+        </video>
+        
         <div class="header" id ="aboutHeader" style="font-family: 'Julius Sans One', serif; font-size: 60px;">
           <h2>Song Suggestions</h2>
         </div>
 
         <div class="button-block">
-            <button class="submit" id="log-out" style="font-family: 'Julius Sans One', serif; top: 50px; right: 50px; z-index:5;" >Log Out</button>
+            <button onclick="log_out()" id="log-out" style="font-family: 'Julius Sans One', serif; top: 50px; right: 50px; z-index:5;" >Log Out</button>
         </div>
 
         <div class="content2">
@@ -53,6 +57,8 @@
 
     <script>
 
+    const form = document.querySelector('#add-song-form');
+
     db.collection('song_suggestions').get().then(snapshot => {
         setupSongs(snapshot.docs);
         console.log(snapshot.docs);
@@ -63,13 +69,16 @@
 
     const setupSongs = (data) => {
         let html ='';
+        let cross = document.createElement('button');
         data.forEach(doc => {
             const song = doc.data();
             console.log(song);
+            cross.textContent= 'x';
             const li = `
                 <li>
-                    <div class="header" style="color: white; font-family: 'Julius Sans One'";><h4>${song.song_title}</h4></div>
+                    <div class="header" style="color: white; font-family: 'Julius Sans One'";><h3>${song.song_title}</h3></div>
                     <div class="body" style="color: white; font-family: 'Julius Sans One'";>${song.song_artist}</div>
+                    <p></p>
                     <p></p>
                 </li>
             `;
@@ -78,6 +87,26 @@
 
         songList.innerHTML = html;
     }
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        db.collection('song_suggestions').add({
+            song_title: form.song_name.value,
+            song_artist: form.song_artist.value,
+            votes: 0
+        });
+        console.log(form.song_name.value);
+        console.log(form.song_artist.value);
+        form.reset();
+        window.location.reload();
+    })
+
+    function log_out() {
+        auth.signOut().then(() =>  {
+            open("../index.html", "_self");
+        });
+    }
+
 
     </script>
   </body>

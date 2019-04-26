@@ -53,10 +53,12 @@
 
 #backgroundVid {
     position: fixed;
+    left: 0;
+    top: 0;
     right: 0;
     bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
+    min-width: 80%;
+    min-height: 90%;
 }
 
 #memberPic {
@@ -77,7 +79,7 @@
 
 .content {
     position: fixed;
-    bottom: 0;
+    bottom: -5px;
     background: #000000;
     color: #f1f1f1;
     width: 100%;
@@ -86,8 +88,8 @@
 }
 
 .content2 {
-    position: fixed;
-    top: 300px;
+    position: relative;
+    top: 0px;
     left: 450px;
     background: #000000;
     color: #f1f1f1;

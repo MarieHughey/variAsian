@@ -16,8 +16,7 @@
         </div>
 
         <div class="button-block">
-            <button class="submit" id="log-out" style="font-family: 'Julius Sans One', serif; top: 50px; right: 50px; z-index:5;" >Log Out</button>
-            <a href="log_out()" style="color: rgb(214, 227, 250)">Log Out</a>
+            <button onclick="log_out()" id="log-out" style="font-family: 'Julius Sans One', serif; top: 50px; right: 50px; z-index:5;" >Log Out</button>
         </div>
         <div class="text-block">
             <h4>Vote!</h4>
@@ -47,14 +46,21 @@
 
     <script>
 
-    const logout = document.querySelector('#log-out');
-    signupForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+    // const logout = document.querySelector('#log-out');
+    // logout.addEventListener('submit', (e) => {
+    //     e.preventDefault();
+    //     console.log("here");
 
-        auth.signOut().then(() => {
+    //     auth.signOut().then(() => {
+    //         open("../index.html", "_self");
+    //     })
+    // });
+
+    function log_out() {
+        auth.signOut().then(() =>  {
             open("../index.html", "_self");
-        })
-    });
+        });
+    }
 
     </script>
   </body>
