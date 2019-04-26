@@ -5,12 +5,12 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Julius+Sans+One">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>VariAsian: Member Services</title>
+    <title>VariAsian: Song Suggestions</title>
   </head>
 
   <body>
     <div class="container">
-        <img src="../images/bts.jpeg" id="memberPic" alt="" style="width:100%;">
+        <img src="../images/bts.jpg" id="btsPic" alt="" style="width:100%;">
         <div class="header" id ="aboutHeader" style="font-family: 'Julius Sans One', serif; font-size: 60px;">
           <h2>Song Suggestions</h2>
         </div>
@@ -19,10 +19,13 @@
             <button class="submit" id="log-out" style="font-family: 'Julius Sans One', serif; top: 50px; right: 50px; z-index:5;" >Log Out</button>
         </div>
 
-        <div class="container" style="margin-top: 40px;">
-            <ul class="collapsible z-depth-0 song_suggestions" style="border-bottom-color: orchid">
-
-
+        <div class="content2">
+            <form id="add-song-form">
+                <input type="text" style="font-family: 'Julius Sans One'" name="song_name" placeholder="Enter Song Name">
+                <input type="text" style="font-family: 'Julius Sans One'" name="song_artist" placeholder="Enter Song Artist">
+                <button type="submit" style="font-family: 'Julius Sans One'">Add Suggestion</button>
+            </form>
+            <ul class="collapsible z-depth-0 song_suggestions" style="border-bottom-color: orchid; list-style-type: none;">
             </ul>
         </div>
     </div>
@@ -40,6 +43,7 @@
         storageBucket: "variasian-connected.appspot.com",
         messagingSenderId: "317829998576"
       };
+
       firebase.initializeApp(config);
 
       const auth = firebase.auth();
@@ -55,6 +59,7 @@
     });
 
     const songList = document.querySelector('.song_suggestions');
+    
 
     const setupSongs = (data) => {
         let html ='';
@@ -63,9 +68,9 @@
             console.log(song);
             const li = `
                 <li>
-                    <div class="collapsible-header grey lighten-4">${song.title}</div>
-                    <div class="collapsible-body white">${song.artist}</div>
-                    <div class="collapsible-body white">${song.votes}</div>
+                    <div class="header" style="color: white; font-family: 'Julius Sans One'";><h4>${song.song_title}</h4></div>
+                    <div class="body" style="color: white; font-family: 'Julius Sans One'";>${song.song_artist}</div>
+                    <p></p>
                 </li>
             `;
             html += li;

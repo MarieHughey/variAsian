@@ -67,6 +67,14 @@
     min-height: 110%;
 }
 
+#btsPic {
+    position: fixed;
+    top: 250px;
+    right: 0;
+    min-width: 60%;
+    min-height: 60%;
+}
+
 .content {
     position: fixed;
     bottom: 0;
@@ -74,6 +82,19 @@
     color: #f1f1f1;
     width: 100%;
     padding: 20px;
+    font-family: 'Julius Sans One';
+}
+
+.content2 {
+    position: fixed;
+    top: 300px;
+    left: 450px;
+    background: #000000;
+    color: #f1f1f1;
+    width: 40%;
+    padding: 10px;
+    font-family: 'Julius Sans One';
+    text-align: center;
 }
 
 .sticky {
