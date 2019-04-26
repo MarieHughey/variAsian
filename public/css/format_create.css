@@ -1,0 +1,33 @@
+.header h2 {
+    margin-top: 0;
+    position: relative;
+    padding: 30px 170px;
+    background: rgb(255, 255, 255);
+    color: #000000;
+}
+
+#memberPic {
+    position: fixed;
+    top: 0;
+    right: 0;
+    min-width: 80%;
+    min-height: 110%;
+    z-index: -3;
+}
+
+.container {
+    position: relative;
+}
+
+.text-block {
+    position: absolute;
+    left: 525px;
+    top: 170px;
+    width: 30%;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Julius Sans One';
+    background-color: #373535;
+    color: white;
+    padding-bottom: 40px;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../css/format_create.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Julius+Sans+One">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VariAsian: Register Member</title>
+  </head>
+
+  <body>
+    <div class="container">
+        <img src="../images/adore_u.jpg" id="memberPic" alt="" style="width:100%;">
+        <div class="header" id ="aboutHeader" style="font-family: 'Julius Sans One', serif; font-size: 60px;">
+          <h2>Register as Team Member</h2>
+        </div>
+
+        <div class="text-block">
+            <h4>Enter Information Below For Board Member Approval:</h4>
+            <form>
+                <p> Name</p>
+                <input type="name" name="" placeholder="Enter Name" id="userName" style="font-family: 'Julius Sans One', serif;">
+                <p> Email</p>
+                <input type="email" name="" placeholder="Enter Email" id="userEmail" style="font-family: 'Julius Sans One', serif;">
+                <p> Phone Number</p>
+                <input type="phone_number" name="" placeholder="Enter Phone Number" id="userPhone" style="font-family: 'Julius Sans One', serif;">
+                <p> Password</p>
+                <input type="password" name="" placeholder="Enter Password" id="userPassword" style="font-family: 'Julius Sans One', serif;">
+                <input type="submit" name="" value="Submit for Approval" onclick="{onSubmitLogin(); return false}" style="font-family: 'Julius Sans One', serif;">
+                <p id="loginFailed"></p>
+                <a href="login_page.html" style="color: rgb(214, 227, 250)">Already Registered? Sign In</a>
+            </form>
+        </div>
+    </div>
+  </body>
+</html>

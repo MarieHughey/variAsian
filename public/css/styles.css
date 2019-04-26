@@ -9,8 +9,8 @@
 .header h2 {
     margin-top: 0;
     position: relative;
-    padding: 20px 300px;
-    background: rgb(214, 227, 250);
+    padding: 20px 375px;
+    background: rgb(255, 255, 255);
     color: #000000;
 }
 
@@ -20,13 +20,15 @@
 
 .text-block {
     position: absolute;
-    left: 0;
-    top: 50%;
-    width: 100%;
+    left: 525px;
+    top: 300px;
+    width: 30%;
     text-align: center;
-    font-size: 40px;
-    background-color: black;
+    font-size: 25px;
+    font-family: 'Julius Sans One';
+    background-color: #373535;
     color: white;
+    padding-bottom: 40px;
 }
 
 .loginBox {
